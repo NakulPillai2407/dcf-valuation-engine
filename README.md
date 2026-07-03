@@ -4,6 +4,10 @@ An interactive Discounted Cash Flow (DCF) valuation tool, built as a Streamlit w
 
 Built as a portfolio project for Quantitative Analyst / Financial Technology roles.
 
+## Live Demo
+
+**[nakul-dcf-engine.streamlit.app](https://nakul-dcf-engine.streamlit.app/)** — try it instantly with **Demo Mode**, no API key required.
+
 ## Key Features
 
 - Pulls the last 5 years of income statement, cash flow statement, and balance sheet data for any ticker
@@ -27,17 +31,17 @@ Built as a portfolio project for Quantitative Analyst / Financial Technology rol
 ## Repo Structure
 
 ```
-├── app.py                     # Streamlit application entry point
+├── app.py                      # Streamlit application entry point
 ├── requirements.txt
 ├── .streamlit/
-│   └── config.toml            # App theme configuration
+│   └── config.toml             # App theme configuration
 └── src/
-    ├── data_fetcher.py        # Pulls financials from FMP + market data from yfinance
-    ├── financial_processor.py # Derives historical FCFF and operating margins
-    ├── dcf_model.py           # Cash flow projection, terminal value, valuation bridge
-    ├── wacc_calculator.py     # CAPM cost of equity + WACC
-    ├── sensitivity_analysis.py# WACC/terminal growth and margin/growth grids, scenarios
-    └── plotting.py            # All chart functions
+    ├── data_fetcher.py         # Pulls financials from FMP + market data from yfinance
+    ├── financial_processor.py  # Derives historical FCFF and operating margins
+    ├── dcf_model.py            # Cash flow projection, terminal value, valuation bridge
+    ├── wacc_calculator.py      # CAPM cost of equity + WACC
+    ├── sensitivity_analysis.py # WACC/terminal growth and margin/growth grids, scenarios
+    └── plotting.py             # All chart functions
 ```
 
 ## Installation & Running Locally
