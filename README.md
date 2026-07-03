@@ -6,7 +6,7 @@ Built as a portfolio project for Quantitative Analyst / Financial Technology rol
 
 ## Live Demo
 
-*(placeholder — Streamlit Cloud deployment link to be added here)*
+*https://nakul-dcf-engine.streamlit.app/*
 
 ## What It Does
 
