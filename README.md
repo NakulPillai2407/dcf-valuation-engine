@@ -95,7 +95,7 @@ DCF valuations are highly sensitive to the terminal growth rate and WACC assumpt
 ## Author
 
 **Nakul Pillai**
-BSc Economics & Data Science, University of Southampton · Incoming MSc Financial Technology, Imperial College London
+MSc Financial Technology, Imperial College London
 
 - LinkedIn: *(add link)*
 - GitHub: *(add link)*
