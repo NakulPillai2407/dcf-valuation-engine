@@ -2,8 +2,6 @@
 
 An interactive Discounted Cash Flow (DCF) valuation tool, built as a Streamlit web app, that pulls real financial data for any publicly listed company, builds a complete DCF model automatically, and presents the results the way an equity research analyst or investment banking associate would. Adjust every assumption — growth, margins, WACC, terminal growth — and watch the valuation, sensitivity tables, and charts update instantly.
 
-Built as a portfolio project for Quantitative Analyst / Financial Technology roles.
-
 ## Live Demo
 
 *https://nakul-dcf-engine.streamlit.app/*
