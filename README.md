@@ -2,11 +2,9 @@
 
 An interactive Discounted Cash Flow (DCF) valuation tool, built as a Streamlit web app, that pulls real financial data for any publicly listed company, builds a complete DCF model automatically, and presents the results the way an equity research analyst or investment banking associate would. Adjust every assumption — growth, margins, WACC, terminal growth — and watch the valuation, sensitivity tables, and charts update instantly.
 
-## Live Demo
+Built as a portfolio project for Quantitative Analyst / Financial Technology roles.
 
-*https://nakul-dcf-engine.streamlit.app/*
-
-## What It Does
+## Key Features
 
 - Pulls the last 5 years of income statement, cash flow statement, and balance sheet data for any ticker
 - Automatically derives historical Free Cash Flow to Firm (FCFF) and key operating margins
@@ -17,7 +15,7 @@ An interactive Discounted Cash Flow (DCF) valuation tool, built as a Streamlit w
 - Runs a full sensitivity analysis — WACC vs terminal growth, EBIT margin vs revenue growth, and Bull/Base/Bear scenarios
 - Ships with a **Demo Mode** that loads a sample Apple (AAPL) dataset with no API key required
 
-## The Methodology — 6 Steps
+## Methodology
 
 1. **Historical Financials** — fetch 5 years of revenue, EBIT, EBITDA, net income, operating cash flow, CapEx, D&A, debt, cash, and shares outstanding.
 2. **Project Future Cash Flows** — grow revenue forward and apply assumed EBIT margin, tax rate, CapEx %, and D&A % to derive projected FCFF for each future year.
@@ -26,24 +24,27 @@ An interactive Discounted Cash Flow (DCF) valuation tool, built as a Streamlit w
 5. **Discount to Present Value** — bring every projected cash flow and the terminal value back to today's dollars using WACC.
 6. **Bridge to Equity Value** — subtract net debt from Enterprise Value to get Equity Value, then divide by shares outstanding to get an intrinsic value per share, compared against the current market price.
 
-## Data Sources
+## Repo Structure
 
-- **[Financial Modeling Prep (FMP)](https://financialmodelingprep.com)** — historical income statements, cash flow statements, balance sheets, and company profile (market cap, beta, sector). Free tier: 250 requests/day.
-- **[yfinance](https://github.com/ranaroussi/yfinance)** — current price, 2-year price history, the 10-year US Treasury yield (risk-free rate), and analyst consensus price targets. No API key required.
-
-## Getting Your Free FMP API Key
-
-1. Go to [financialmodelingprep.com](https://financialmodelingprep.com) and create a free account.
-2. Copy your API key from the developer dashboard.
-3. Paste it into the sidebar of this app (stored only in your browser session — never hardcoded or persisted).
-
-*(FMP also offers a 30% student discount on paid plans, if you outgrow the free tier.)*
+```
+├── app.py                     # Streamlit application entry point
+├── requirements.txt
+├── .streamlit/
+│   └── config.toml            # App theme configuration
+└── src/
+    ├── data_fetcher.py        # Pulls financials from FMP + market data from yfinance
+    ├── financial_processor.py # Derives historical FCFF and operating margins
+    ├── dcf_model.py           # Cash flow projection, terminal value, valuation bridge
+    ├── wacc_calculator.py     # CAPM cost of equity + WACC
+    ├── sensitivity_analysis.py# WACC/terminal growth and margin/growth grids, scenarios
+    └── plotting.py            # All chart functions
+```
 
 ## Installation & Running Locally
 
 ```bash
 # Clone the repository
-git clone <this-repo-url>
+git clone https://github.com/NakulPillai2407/dcf-valuation-engine.git
 cd dcf-valuation-engine
 
 # Create a virtual environment (recommended)
@@ -59,11 +60,15 @@ streamlit run app.py
 
 Then open the URL Streamlit prints (usually `http://localhost:8501`), enter your FMP API key and a ticker in the sidebar, or click **Demo Mode** to explore immediately with no key.
 
-## Screenshots
+**Getting a free FMP API key:** go to [financialmodelingprep.com](https://financialmodelingprep.com), create a free account, and copy your API key from the developer dashboard. Paste it into the sidebar of this app — it's stored only in your browser session, never hardcoded or persisted. (FMP also offers a 30% student discount on paid plans, if you outgrow the free tier.)
 
-*(placeholder — add screenshots of the Company Overview, DCF Model, Sensitivity Analysis, and Valuation Gauge tabs here)*
+## Tech Stack
 
-## Key Financial Concepts
+- **Python**, **Streamlit**, **Plotly**, **Pandas / NumPy**
+- **[Financial Modeling Prep (FMP)](https://financialmodelingprep.com)** — historical income statements, cash flow statements, balance sheets, and company profile data. Free tier: 250 requests/day.
+- **[yfinance](https://github.com/ranaroussi/yfinance)** — current price, price history, risk-free rate, and analyst consensus price targets. No API key required.
+
+## Key Concepts
 
 **What is a DCF?**
 A Discounted Cash Flow valuation estimates what a company is worth today by forecasting all the cash it will generate in the future and discounting those future cash flows back to present-day value — because a dollar received in five years is worth less than a dollar today.
@@ -77,25 +82,16 @@ The Weighted Average Cost of Capital is the blended annual return required by ev
 **What is Terminal Value?**
 Since cash flows can't be explicitly projected forever, the terminal value captures the value of everything the business generates after the explicit forecast window, assuming it settles into stable, perpetual growth. It typically represents 60-80% of total Enterprise Value.
 
-## Limitations & Disclaimer
+## Limitations
 
 DCF valuations are highly sensitive to the terminal growth rate and WACC assumptions — small changes in either can swing the result by 20-30%. Historical margins are a starting point, not a guarantee of future performance, and this model does not capture qualitative factors such as management quality, competitive dynamics, or forward guidance.
 
 **This is an educational tool built for portfolio purposes. It is not financial advice and should not be used as the sole basis for any investment decision.**
 
-## Technologies Used
-
-- Python
-- Streamlit
-- Plotly
-- Financial Modeling Prep API
-- yfinance
-- Pandas / NumPy
-
 ## Author
 
 **Nakul Pillai**
-MSc Financial Technology, Imperial College London
+BSc Economics & Data Science, University of Southampton · Incoming MSc Financial Technology, Imperial College London
 
-- LinkedIn: *(add link)*
-- GitHub: *(add link)*
+- LinkedIn: [linkedin.com/in/nakul-pillai](https://www.linkedin.com/in/nakul-pillai)
+- GitHub: [@NakulPillai2407](https://github.com/NakulPillai2407)
